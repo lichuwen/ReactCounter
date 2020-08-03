@@ -4,27 +4,22 @@ class Counter extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            number: 0
+            number: 0,
+            count: this.props.count
         };
         this.reduce = this.reduce.bind(this);
         this.increase = this.increase.bind(this);
     }
 
-    // componentWillUnmount() {
-    //     console.log("------Unmount-------")
-    // }
-    // componentDidMount() {
-    //     console.log("------didMount-------")
-    // }
-    // componentWillUpdate(){
-    //     console.log("------willUpdate-------")
-    // }
-    // componentDidUpdate(){
-    //     console.log("------didUpdate-------")
-    // }
+    static getDerivedStateFromProps(Props,State){
+        if(State.count != Props.count){
+            return{
+                number:0
+            }
+        }
+    }
 
     increase = () => {
-        // this.setState({number: ++this.state.number})
         this.setState((preState) => ({
             number: preState.number + 1
             })
@@ -32,13 +27,19 @@ class Counter extends React.Component{
         this.props.countTotal(1)
     }
 
+    // componentWillReceiveProps(){
+    //     this.props.counterNumber
+    // }
+
 
     reduce = () => {
-        // this.setState({number: --this.state.number})
-        this.setState((preState) => ({
-            number: preState.number - 1
-            })
-        )
+        if(this.props.counterNumber != 0){
+            this.setState((preState) => ({
+                number: preState.number - 1
+                })
+            )
+        }
+        
         this.props.countTotal(-1)
     }
 

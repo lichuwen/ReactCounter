@@ -13,6 +13,7 @@ class CounterGroup extends React.Component{
     inputCount = (e) =>{
 		this.setState({
             count: e.target.value,
+            total:0
         })   
     }
 
@@ -28,7 +29,7 @@ class CounterGroup extends React.Component{
             <div>
                 <p>numbers of counters：
                     <input
-                        value={this.state.count}
+                        // value={this.state.count}
                         onChange={this.inputCount}
                     />
                 </p>
@@ -36,7 +37,7 @@ class CounterGroup extends React.Component{
                     <label>{this.state.total}</label>
                 </p>
                 {new Array(Number(this.state.count)).fill().map((key,index) => 
-                    <Counter key={index} countTotal={this.countTotal}/>
+                    <Counter key={index} countTotal={this.countTotal} count={this.state.count}/>
                 )}
             </div>
         );
