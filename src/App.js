@@ -6,7 +6,8 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <CounterGroup count={13}/>
+      {/* <CounterGroup count={this.state.count}/> */}
+      <CounterGroup />
     </div>
   );
 }

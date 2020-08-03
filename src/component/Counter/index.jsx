@@ -8,7 +8,6 @@ class Counter extends React.Component{
         };
         this.reduce = this.reduce.bind(this);
         this.increase = this.increase.bind(this);
-        console.log("------constructor-------")
     }
 
     componentWillUnmount() {
