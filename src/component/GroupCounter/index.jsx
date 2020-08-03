@@ -5,26 +5,39 @@ class CounterGroup extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            count: ""
+            count: 0,
+            total : 0
         };
     }
 
-    handelChange(e){
+    inputCount = (e) =>{
 		this.setState({
-			inputCount:parseInt(e.target.value)
-		})
-	}
+            count: e.target.value,
+        })   
+    }
+
+    countTotal = (value) => {
+        this.setState((preState) => ({
+                total: preState.total + value
+            })
+        )
+    }
 
     render(){
         return(
             <div>
                 <p>numbers of counters：
                     <input
-                        value={this.state.inputCount}
-                        onChange={this.handelChange.bind(this)}
+                        value={this.state.count}
+                        onChange={this.inputCount}
                     />
                 </p>
-                {new Array(this.state.inputCount).fill().map((key,index) => <Counter key={index}/>)}
+                <p>total:
+                    <label>{this.state.total}</label>
+                </p>
+                {new Array(Number(this.state.count)).fill().map((key,index) => 
+                    <Counter key={index} countTotal={this.countTotal}/>
+                )}
             </div>
         );
     }

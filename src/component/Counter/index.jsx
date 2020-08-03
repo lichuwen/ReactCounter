@@ -10,18 +10,18 @@ class Counter extends React.Component{
         this.increase = this.increase.bind(this);
     }
 
-    componentWillUnmount() {
-        console.log("------Unmount-------")
-    }
-    componentDidMount() {
-        console.log("------didMount-------")
-    }
-    componentWillUpdate(){
-        console.log("------willUpdate-------")
-    }
-    componentDidUpdate(){
-        console.log("------didUpdate-------")
-    }
+    // componentWillUnmount() {
+    //     console.log("------Unmount-------")
+    // }
+    // componentDidMount() {
+    //     console.log("------didMount-------")
+    // }
+    // componentWillUpdate(){
+    //     console.log("------willUpdate-------")
+    // }
+    // componentDidUpdate(){
+    //     console.log("------didUpdate-------")
+    // }
 
     increase = () => {
         // this.setState({number: ++this.state.number})
@@ -29,6 +29,7 @@ class Counter extends React.Component{
             number: preState.number + 1
             })
         )
+        this.props.countTotal(1)
     }
 
 
@@ -38,7 +39,7 @@ class Counter extends React.Component{
             number: preState.number - 1
             })
         )
-        console.log("------render-------")
+        this.props.countTotal(-1)
     }
 
 
