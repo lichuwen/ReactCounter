@@ -6,7 +6,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <CounterGroup/>
+      <CounterGroup count={13}/>
     </div>
   );
 }
